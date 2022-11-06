@@ -33,7 +33,7 @@ with open("lesson.log", mode="a", encoding="utf") as file:
   try:
    c=a/b
    print(f"Результат деления {a}/{b}={c} {datetime.datetime.now()}")
-   file.writelines(f'info Результат деления {a} / {b} = {c} {datetime.datetime.now()}\n')
+   file.writelines(f'Info Результат деления {a} / {b} = {c} {datetime.datetime.now()}\n')
   except ZeroDivisionError:
    print(f'Error деление  на 0 {a}/{b} не допустимо {datetime.datetime.now()}')   
    file.writelines(f'Error деление  на 0 {a} / {b} не допустимо {datetime.datetime.now()}\n')
@@ -45,16 +45,19 @@ with open("lesson.log", mode="a", encoding="utf") as file:
   if i=="нет" or i=="n":
    s='n'  
 
-         
+# with open("lesson.log", mode="a", encoding="utf") as file:
+intError=0
+intInfo=0
+list_str=[]
+with open("lesson.log", mode="r",encoding="utf") as file:
+  list_str=file.readlines()
+  # print(list_str)
+  for el in list_str:
+    if el.find("Error")!=-1:
+     intError+=1  
+    if el.find("Info")!=-1:
+     intInfo+=1  
+    print(el," ")
 
-#  file.write(f"Error {ValueError.__str__} ")   
-# ... except Exception:
-# ...     print('Это что ещё такое?')
+print(f"В файле количество лог intError = {intError} intInfo = {intInfo}")
 
-#  try:
-  
-#  except:
-# except ZeroDivisionError:
-#   print(f"Вы ввели не число")     
-#  finally:
-#   print(f"Вы ввели число={a}")   
