@@ -7,16 +7,18 @@ print("Hello word")
 print("Данная программа производить деление одного деления на другое и выводить значение в лог файл")
 
 with open("lesson.log", mode="a", encoding="utf") as file:
-i=''
-s='y'
-while s=='y':
- while True:   
-  try:
-   a=int(input("Введите первое число= "))  
-   break
-  except ValueError:
-   print(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
-   file.writelines(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+ i=''
+ s='y'
+ while s=='y':
+  while True:   
+   try:
+    a=int(input("Введите первое число= "))  
+    break
+   except ValueError:
+    file.writelines(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+    print(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+    print("Попробуйте еще раз.")
+   
  while True:   
   try:
    b=int(input("Введите второе число= "))  
@@ -24,6 +26,7 @@ while s=='y':
   except ValueError:
    print(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
    file.writelines(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
+   print("Попробуйте еще раз.")
 
  
  try:
