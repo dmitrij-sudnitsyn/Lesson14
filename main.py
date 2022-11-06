@@ -6,29 +6,34 @@ import datetime
 print("Hello word")
 print("Данная программа производить деление одного деления на другое и выводить значение в лог файл")
 
-# with open("lesson.log", mode="a", encoding="utf") as file:
+with open("lesson.log", mode="a", encoding="utf") as file:
 i=''
 s='y'
 while s=='y':
- try:
-  a=int(input("Введите первое число= "))  
- except ValueError:
-  print(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
-  quit()
- try:
-  b=int(input("Введите второе число= "))  
- except ValueError:
-  print(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
-  quit()
- finally:
-  pass   
+ while True:   
+  try:
+   a=int(input("Введите первое число= "))  
+   break
+  except ValueError:
+   print(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+   file.writelines(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+ while True:   
+  try:
+   b=int(input("Введите второе число= "))  
+   break
+  except ValueError:
+   print(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
+   file.writelines(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
+
+ 
  try:
   c=a/b
+  print(f"Результат деления {a}/{b}={c} {datetime.datetime.now()}")
+  file.writelines(f"info Результат деления {a} / {b} = {c} {datetime.datetime.now()}")
  except ZeroDivisionError:
   print(f'Error деление  на 0 {a}/{b} не допустимо {datetime.datetime.now()}')   
-  quit()
- print(f"Результат деления {a}/{b}={c} {datetime.datetime.now()}")
- 
+  file.writelines(f'Error деление  на 0 {a} / {b} не допустимо {datetime.datetime.now()}')
+
  print("Продолжим деление?")
  print("Введите Да или Y если хотите повторить")
  print("Введите Нет или n если хотите закончить")
