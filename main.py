@@ -9,40 +9,41 @@ print("Данная программа производить деление о�
 with open("lesson.log", mode="a", encoding="utf") as file:
  i=''
  s='y'
+ str1='True'
  while s=='y':
-  while True:   
+  while str1=='True':   
    try:
     a=int(input("Введите первое число= "))  
     break
+    str1='False'
    except ValueError:
-    file.writelines(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
+    file.writelines(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}\n')
     print(f'Error при вводе первого числа вы ввели не число {datetime.datetime.now()}')
     print("Попробуйте еще раз.")
    
- while True:   
+  while str1=='True':   
+   try:
+    b=int(input("Введите второе число= "))  
+    break
+    str1='False'
+   except ValueError:
+    print(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
+    file.writelines(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}\n')
+    print("Попробуйте еще раз.")
   try:
-   b=int(input("Введите второе число= "))  
-   break
-  except ValueError:
-   print(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
-   file.writelines(f'Error при вводе второго числа вы ввели не число {datetime.datetime.now()}')
-   print("Попробуйте еще раз.")
+   c=a/b
+   print(f"Результат деления {a}/{b}={c} {datetime.datetime.now()}")
+   file.writelines(f'info Результат деления {a} / {b} = {c} {datetime.datetime.now()}\n')
+  except ZeroDivisionError:
+   print(f'Error деление  на 0 {a}/{b} не допустимо {datetime.datetime.now()}')   
+   file.writelines(f'Error деление  на 0 {a} / {b} не допустимо {datetime.datetime.now()}\n')
 
- 
- try:
-  c=a/b
-  print(f"Результат деления {a}/{b}={c} {datetime.datetime.now()}")
-  file.writelines(f"info Результат деления {a} / {b} = {c} {datetime.datetime.now()}")
- except ZeroDivisionError:
-  print(f'Error деление  на 0 {a}/{b} не допустимо {datetime.datetime.now()}')   
-  file.writelines(f'Error деление  на 0 {a} / {b} не допустимо {datetime.datetime.now()}')
-
- print("Продолжим деление?")
- print("Введите Да или Y если хотите повторить")
- print("Введите Нет или n если хотите закончить")
- i=input("Продолжить? ")
- if i=="нет" or i=="n":
-  s='n'  
+  print("Продолжим деление?")
+  print("Введите Да или Y если хотите повторить")
+  print("Введите Нет или n если хотите закончить")
+  i=input("Продолжить? ")
+  if i=="нет" or i=="n":
+   s='n'  
 
          
 
